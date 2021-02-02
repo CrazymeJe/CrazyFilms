@@ -1,0 +1,66 @@
+<main *ngIf="film" role="main">
+
+  <div class="jumbotron img-fluid"
+       style="background-image:  linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.2)), url({{film.images[0]}})">
+    <div class="container pb-2 background-container">
+      <p class="title display-3">{{film.title}}</p>
+      <span class="badge badge-pill badge-success mr-2">{{film.released}}</span>
+      <span class="badge badge-pill badge-success mr-2">{{film.country}}</span>
+      <span class="badge badge-pill badge-success mr-2">{{film.genre}}</span>
+      <span class="badge badge-pill badge-success">{{film.runtime}}</span>
+      <p class="plot">{{film.plot}}</p>
+      <p><strong>Awards:</strong> {{film.awards}}</p>
+      <p><strong>Director:</strong> {{film.director}}</p>
+      <p><strong>Writer:</strong> {{film.writer}}</p>
+      <p><strong>Actors:</strong> {{film.actors}}</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2 class="display-4 text-color">{{film.imdbRating}}</h2>
+        <h3>Average Rating</h3>
+        <p>This is the users vote for this movie</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h2 class="display-4 text-color">{{film.imdbVotes}}</h2>
+        <h3>Total Votes</h3>
+        <p>Here's how many people voted for this movie</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h2 class="display-4">Vote!</h2>
+        <h3>You rate this movie: <span class="vote-number">{{userRating}}</span></h3>
+
+        <fieldset class="rating">
+          <input type="radio" (change)="saveUserRating()" [(ngModel)]="userRating" id="star5" name="rating" value="5"
+                 [attr.disabled]="userRating > 0 ? 'disabled' : null"/>
+          <label class="full" for="star5"
+                 title="Awesome - 5 stars"></label>
+          <input type="radio" (change)="saveUserRating()" [(ngModel)]="userRating" id="star4" name="rating" value="4"
+                 [attr.disabled]="userRating > 0 ? 'disabled' : null"/>
+          <label class="full" for="star4"
+                 title="Pretty good - 4 stars"></label>
+          <input type="radio" (change)="saveUserRating()" [(ngModel)]="userRating" id="star3" name="rating" value="3"
+                 [attr.disabled]="userRating > 0 ? 'disabled' : null"/>
+          <label class="full" for="star3"
+                 title="Meh - 3 stars"></label>
+          <input type="radio" (change)="saveUserRating()" [(ngModel)]="userRating" id="star2" name="rating" value="2"
+                 [attr.disabled]="userRating > 0 ? 'disabled' : null"/>
+          <label class="full" for="star2"
+                 title="Kinda bad - 2 stars"></label>
+          <input type="radio" (change)="saveUserRating()" [(ngModel)]="userRating" id="star1" name="rating" value="1"
+                 [attr.disabled]="userRating > 0 ? 'disabled' : null"/>
+          <label class="full" for="star1"
+                 title="Sucks big time - 1 star"></label>
+        </fieldset>
+
+
+      </div>
+    </div>
+
+    <hr>
+
+  </div>
+
+</main>

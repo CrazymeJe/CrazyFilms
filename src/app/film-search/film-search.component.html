@@ -1,0 +1,13 @@
+<div id="search-component">
+  <div class="input-group">
+    <input #searchBox type="text" class="form-control" (input)="search(searchBox.value)" placeholder="Film Search">
+    <ul [ngClass]="{'show' : !!(films$ | async)?.length}" class="dropdown-menu position-absolute">
+      <li *ngFor="let film of films$ | async">
+        <a class="dropdown-item" routerLink="/detail/{{film.id}}" target="_blank">
+          {{film.title}}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
